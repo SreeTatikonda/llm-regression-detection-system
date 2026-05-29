@@ -4,20 +4,21 @@ A regression testing system for LLM-powered features. The project evaluates a ve
 
 ## Problem
 
-LLM applications change frequently. Prompt edits, model upgrades, and inference changes can alter behavior in ways that are difficult to detect without stable test data and repeatable evaluation workflows [1][3].
+LLM applications change frequently. Prompt edits, model upgrades, and inference changes can alter behavior in ways that are difficult to detect without stable test data and repeatable evaluation workflows.
 
-This project addresses that operational problem by treating model behavior as something that can be versioned, tested, compared, and gated before deployment rather than evaluated informally after release [2][4].
+This project addresses that operational problem by treating model behavior as something that can be versioned, tested, compared, and gated before deployment rather than evaluated informally after release.
 
 ## Architecture
 
+![LLM Regression Detection System architecture](IMAGE.png)
 
 
 The system is organized into four layers:
 
-- **Inputs**: GitHub Actions triggers, versioned YAML prompt configurations, and a human-labeled golden dataset [2][5].
-- **Execution**: an evaluation runner invokes the LLM feature under test and captures structured outputs [1][4].
-- **Evaluation**: a scoring engine measures category accuracy, summary quality, latency, and token usage, then compares the current run against a baseline [6][3].
-- **Actions**: configurable thresholds determine whether the system produces an HTML report, sends a Slack alert, or blocks a pull request through CI status checks [1][5].
+- **Inputs**: GitHub Actions triggers, versioned YAML prompt configurations, and a human-labeled golden dataset.
+- **Execution**: an evaluation runner invokes the LLM feature under test and captures structured outputs.
+- **Evaluation**: a scoring engine measures category accuracy, summary quality, latency, and token usage, then compares the current run against a baseline.
+- **Actions**: configurable thresholds determine whether the system produces an HTML report, sends a Slack alert, or blocks a pull request through CI status checks.
 
 ## Scope
 
@@ -118,19 +119,19 @@ pytest
 
 ### Prompt versioning
 
-Prompts are stored as YAML configuration files so prompt changes are reviewable, diffable, and easy to connect to CI triggers when files in the `prompts/` directory change [2][5].
+Prompts are stored as YAML configuration files so prompt changes are reviewable, diffable, and easy to connect to CI triggers when files in the `prompts/` directory change.
 
 ### Typed interfaces
 
-The classifier input, output, and prompt configuration are validated with Pydantic so downstream evaluation code can depend on stable schemas rather than parse free-form text [4].
+The classifier input, output, and prompt configuration are validated with Pydantic so downstream evaluation code can depend on stable schemas rather than parse free-form text.
 
 ### Local-first storage
 
-The project favors portable components such as YAML, JSON, Python modules, and planned SQLite storage so the system remains easy to inspect, easy to run locally, and simple to evolve before introducing heavier infrastructure [7][3].
+The project favors portable components such as YAML, JSON, Python modules, and planned SQLite storage so the system remains easy to inspect, easy to run locally, and simple to evolve before introducing heavier infrastructure.
 
 ### Custom evaluation layer
 
-DeepEval and RAGAS are useful for later metric expansion, but the initial design keeps evaluation logic explicit so scoring, diffing, and thresholding remain understandable and easy to extend [1][6][3].
+DeepEval and RAGAS are useful for later metric expansion, but the initial design keeps evaluation logic explicit so scoring, diffing, and thresholding remain understandable and easy to extend.
 
 ## Tradeoffs
 
@@ -156,7 +157,7 @@ Each test case is intended to include:
 - Difficulty label.
 - Human notes explaining why the case exists.
 
-The dataset is designed to begin with hand-labeled examples and expand over time with failure cases identified during evaluation. That keeps the benchmark tied to real system behavior rather than synthetic examples alone [2][3].
+The dataset is designed to begin with hand-labeled examples and expand over time with failure cases identified during evaluation. That keeps the benchmark tied to real system behavior rather than synthetic examples alone.
 
 ## Roadmap
 
@@ -189,4 +190,4 @@ The dataset is designed to begin with hand-labeled examples and expand over time
 | Prompt versioning | YAML | Human-readable and diff-friendly |
 | Testing | Pytest | Simple and CI-friendly |
 | Logging | Structured Python logging | Better observability during development |
-| Evaluation support | DeepEval and/or RAGAS | Useful for advanced LLM evaluation metrics [1][3] |
+| Evaluation support | DeepEval and/or RAGAS | Useful for advanced LLM evaluation metrics|
