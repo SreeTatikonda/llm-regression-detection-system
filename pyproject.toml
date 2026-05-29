@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-regression-guard"
+version = "0.1.1"
+description = "Phase 1 of a model regression detection system: typed LLM support email classifier with versioned prompts"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "openai>=1.30.0",
+  "pydantic>=2.7.0",
+  "pydantic-settings>=2.2.1",
+  "PyYAML>=6.0.1",
+  "structlog>=24.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.0",
+  "pytest-mock>=3.14.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
