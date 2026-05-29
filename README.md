@@ -114,7 +114,7 @@ Run the unit tests:
 ```bash
 pytest
 ```
-![Detailed workflow for the LLM Regression Detection System](MODEL_REGRESSION_DETECTION_SYSTEM.jpg)
+![Detailed workflow for the LLM Regression Detection System](MODEL_REGRESSION_DETECTION_SYSTEM.jpeg)
 ## Design Decisions
 
 ### Prompt versioning
