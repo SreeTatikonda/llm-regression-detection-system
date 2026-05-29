@@ -1,6 +1,6 @@
 # LLM Regression Detection System
 
-A regression testing system for LLM-powered features. The project evaluates a versioned LLM feature against a golden dataset, compares the results to a baseline, and supports report generation, alerting, and CI/CD gating for prompt and model changes [1][2].
+A regression testing system for LLM-powered features. The project evaluates a versioned LLM feature against a golden dataset, compares the results to a baseline, and supports report generation, alerting, and CI/CD gating for prompt and model changes.
 
 ## Problem
 
